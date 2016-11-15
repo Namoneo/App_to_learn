@@ -1,0 +1,10 @@
+<h1>Welcome to our service</h1>
+
+<%= link_to "Start to learn", new_user_registration_path %>
+
+
+<ul>
+  <% @users.each do |user| %>
+  <li><%= link_to user.email, user_words_path(user) %></li>
+  <% end %>
+</ul>

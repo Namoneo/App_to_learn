@@ -1,0 +1,3 @@
+<%= form_for [user, user.words.new], remote: true do |f| %>
+  <%= f.text_field :name, placeholder: "Word name", id: "word-name" %>
+<% end %>

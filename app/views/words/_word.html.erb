@@ -1,0 +1,4 @@
+<li id="word-<%= word.id %>">
+  <%= word.name %>
+  <%= link_to "Delete", user_word_path(@user, word), method: :delete, remote: true %>
+</li>
