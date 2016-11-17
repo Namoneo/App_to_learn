@@ -1,3 +1,5 @@
-<%= form_for [user, user.words.new], remote: true do |f| %>
-  <%= f.text_field :name, placeholder: "Word name", id: "word-name" %>
+<%= form_for @word do |f| %>
+  <%= f.text_field :name, placeholder: "Enter a word", id: "word-name" %>
+  <%= f.text_field :translation, placeholder: "Word translation", id: "word-translation" %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>

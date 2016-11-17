@@ -1,14 +1,14 @@
 class WordsController < ApplicationController
 
-  before_action :set_user
 
   def index
     @word = Word.new
-    @words = @user.words
+    @words = Word.all
   end
 
   def create
-    @word = @user.words.build(word_params)
+    @word = Word.new( word_params )
+
     @word.save!
 
     respond_to do |format|
@@ -36,6 +36,6 @@ class WordsController < ApplicationController
   end
 
   def word_params
-    params.require(:word).permit(:name)
+    params.require(:word).permit(:name, :translation)
   end
 end

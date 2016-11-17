@@ -1,0 +1,11 @@
+<h2>Text overview</h2>
+<div class="container">
+<% @texts.each do |text| %>
+<h3><%=text.name%></h3>
+<%=link_to "Read more", text_path(text.id) %>
+<%end%>
+</div>
+<br>
+<br>
+
+<%= link_to "Create Text", new_text_path, class: "btn btn-default" %>

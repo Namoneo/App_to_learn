@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :texts
   #resources :words
-  root "users#index"
-  resources :users, only: [:index] do
-      resources :words, only: [:index, :create, :destroy]
-  end
+  root "texts#index"
+
+  resources :words
+
+  resources :users
 #root to: 'pages#home'
 
   devise_for :users
