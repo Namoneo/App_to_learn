@@ -9,22 +9,22 @@ class WordsController < ApplicationController
   def create
     @word = Word.new( word_params )
 
-    @word.save!
+    @word.save
 
     respond_to do |format|
-      format.html { redirect_to user_words_path(@user) }
+      format.html { redirect_to words_path() }
       format.js # render words/create.js.erb
     end
   end
 
   def destroy
     @word = Word.find(params[:id])
-    @word.destroy!
+    @word.destroy
 
     @words = @user.words
 
     respond_to do |format|
-      format.html { redirect_to user_words_path(@user) }
+      format.html { redirect_to words_path }
       format.js # render words/create.js.erb
     end
   end

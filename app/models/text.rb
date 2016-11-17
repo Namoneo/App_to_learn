@@ -4,10 +4,11 @@ class Text < ApplicationRecord
 
 private
 
-  def create_words
-      words = self.description.split(/\W+/)
-      words.each do |splitted|
-        self.words.create(name: splitted, translation: '')
-      end
-  end
+
+def create_words
+    words = self.description.split(/\W+/)
+        words.each do |splitted|
+      self.words.create(name: splitted, translation: '')
+        end
+    end
 end
