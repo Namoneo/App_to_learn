@@ -1,6 +1,10 @@
 
 <h2><%= @text.name %></h2><br>
-<p><%= @text.description %></p>
-
+<span><% @words.each do |word| %>
+<%= link_to word.name, word %>
+<%end%></span>
+<br>
+<br>
+<br>
 <%= link_to "Delete", @text, class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
 <%= link_to "back", root_path, class: "btn btn-default" %>

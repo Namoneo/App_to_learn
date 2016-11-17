@@ -10,7 +10,7 @@ end
 
 def create
   @text = Text.new(text_params)
-  
+
   if @text.save
     redirect_to text_path(@text), notice: "Text successfully created"
   else
@@ -20,6 +20,7 @@ end
 
 def show
   @text = Text.find(params[:id])
+  @words = @text.words
 end
 
 def destroy
@@ -32,6 +33,10 @@ end
 
 
 private
+
+def set_word
+  params.required(:word).permit(:name, :translation, :text_id)
+end
 
 def set_text
   @text = Text.find(params[:id])

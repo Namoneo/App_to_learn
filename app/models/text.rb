@@ -1,5 +1,5 @@
 class Text < ApplicationRecord
-  has_many :words
+  has_many :words, dependent: :nullify
   after_create :create_words
 
 private
