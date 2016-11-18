@@ -2,10 +2,11 @@
     <%= word.name %> ---
     <% if word.translation.empty? %>
       <%= form_for word, remote: true do |f| %>
-        <%= f.text_field :translation %> <%= f.submit :update %>
+        <%= f.text_field :translation %>
+        <%= f.select :know, [["I know", true], ["I don't know", false]] %>
+         <%= f.submit :update, class: "btn btn-default" %>
       <% end %>
     <% else %>
       <%= word.translation %>
     <% end %>
-    <%= link_to "Delete", word_path(word.id), method: :delete, remote: true %>
 </li>

@@ -10,7 +10,7 @@ class WordsController < ApplicationController
   def create
     @word = Word.new( word_params )
 
-  
+
     if @word.save
       respond_to do |format|
         format.html { redirect_to words_path() }
@@ -42,7 +42,7 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to words_path }
-      format.js {}# render words/create.js.erb
+      format.js { }# render words/create.js.erb
     end
   end
 
@@ -53,6 +53,6 @@ class WordsController < ApplicationController
   end
 
   def word_params
-    params.require(:word).permit(:name, :translation, :text_id)
+    params.require(:word).permit(:name, :translation, :text_id, :know)
   end
 end
