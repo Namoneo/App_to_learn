@@ -1,5 +1,5 @@
 class Word < ApplicationRecord
-  belongs_to :text
+  belongs_to :text, optional: true
   validate :check_existing
 
   private

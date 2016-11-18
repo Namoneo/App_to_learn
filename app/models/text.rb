@@ -7,8 +7,8 @@ private
 
 def create_words
     words = self.description.split(/\W+/)
-        words.each do |splitted|
-      self.words.create(name: splitted, translation: '')
-        end
+      words.each do |splitted|
+    self.words.create(name: splitted, translation: '')
+      end
     end
 end

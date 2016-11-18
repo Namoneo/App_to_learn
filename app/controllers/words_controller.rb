@@ -1,4 +1,5 @@
 class WordsController < ApplicationController
+  before_action :authenticate_user!
 
 
   def index
@@ -9,11 +10,27 @@ class WordsController < ApplicationController
   def create
     @word = Word.new( word_params )
 
-    @word.save
+  
+    if @word.save
+      respond_to do |format|
+        format.html { redirect_to words_path() }
+        format.js { } # render words/create.js.erb
+      end
+    else
+      # todo> show an error
+      respond_to do |format|
+        format.html { redirect_to words_path() }
+        format.js { render 'error' } # render words/create.js.erb
+      end
+    end
+  end
 
+  def update
+    @word = Word.find(params[:id])
+
+    @word.update_attribute(:translation, params[:word][:translation])
     respond_to do |format|
-      format.html { redirect_to words_path() }
-      format.js # render words/create.js.erb
+      format.js { } # render words/create.js.erb
     end
   end
 
@@ -25,7 +42,7 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to words_path }
-      format.js # render words/create.js.erb
+      format.js {}# render words/create.js.erb
     end
   end
 

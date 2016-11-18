@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   resources :words
 
-  resources :users
 #root to: 'pages#home'
 
   devise_for :users

@@ -1,5 +1,6 @@
 class TextsController < ApplicationController
-
+  before_action :authenticate_user!
+  
 def index
   @texts = Text.all
 end
@@ -9,10 +10,18 @@ def new
 end
 
 def create
+
   @text = Text.new(text_params)
 
   if @text.save
-    redirect_to text_path(@text), notice: "Text successfully created"
+    message = "Text successfully created."
+    if @text.words.count > 0
+      message += " #{@text.words.count} #{@text.words.count > 1 ? 'words were' : 'word was'}  inserted"
+    else
+      message += ' No words were inserted.'
+    end
+
+    redirect_to text_path(@text), notice: message
   else
     render :new
   end

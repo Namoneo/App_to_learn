@@ -1,5 +1,11 @@
 <li id="word-<%= word.id %>">
     <%= word.name %> ---
-    <%= word.translation %>
-  <%= link_to "Delete", word_path(word.id), method: :delete, remote: true %>
+    <% if word.translation.empty? %>
+      <%= form_for word, remote: true do |f| %>
+        <%= f.text_field :translation %> <%= f.submit :update %>
+      <% end %>
+    <% else %>
+      <%= word.translation %>
+    <% end %>
+    <%= link_to "Delete", word_path(word.id), method: :delete, remote: true %>
 </li>

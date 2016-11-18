@@ -3,7 +3,7 @@
 <div class="col-xs-6 col-lg-4">
   <% @texts.each do |text| %>
       <h2><%=text.name%></h2>
-      <p><%= text.description%></p>
+      <p><%= text.description.truncate_words(10) %></p>
     <p><%=link_to "Read more", text_path(text.id), class: "btn btn-default"%></p>
     <%end%>
 </div>
